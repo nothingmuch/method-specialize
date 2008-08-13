@@ -12,6 +12,8 @@ use Sub::Name qw(subname);
 
 use namespace::clean;
 
+our $VERSION = "0.01";
+
 use Sub::Exporter -setup => {
     exports => [qw(
         specializing_method
