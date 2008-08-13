@@ -108,7 +108,7 @@ is( $cached, 5, "called specialized" );
 
 ok( !Foo->mydoes("RoleC"), "not C" );
 
-is( $gen, 3, "didn't all generator" );
+is( $gen, 3, "didn't call generator" );
 is( $cached, 6, "called specialized" );
 
 Moose::Util::apply_all_roles( Foo => qw(RoleC) );
