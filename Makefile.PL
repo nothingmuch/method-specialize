@@ -13,7 +13,8 @@ WriteMakefile(
 	PREREQ_PM    => {
 		'Test::use::ok' => 0,
         'Class::MethodCache' => 0.02,
-        'Sub::Name' => 0,
+        'Sub::Name' => 0.04,
+        'namespace::clean' => 0.08,
 	},
 );
 
