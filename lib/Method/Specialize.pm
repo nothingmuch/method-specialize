@@ -10,8 +10,6 @@ use Class::MethodCache qw(:all);
 use Scalar::Util qw(refaddr weaken);
 use Sub::Name qw(subname);
 
-use warnings::register;
-
 use namespace::clean;
 
 use Sub::Exporter -setup => {
