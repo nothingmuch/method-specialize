@@ -146,7 +146,7 @@ Method::Specialize - Generate per-subclass variants for your methods.
 This package uses L<Class::MethodCache> to create per-subclass versions of a
 method.
 
-This is useful for for removing dynamism from generated code.
+This is useful for removing dynamism from generated code.
 
 The generated versions will be invalidated using the same mechanism that
 invalidates Perl's method resolution caching, so any changes to C<@ISA> or a
