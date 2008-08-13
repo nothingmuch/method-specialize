@@ -123,9 +123,52 @@ Method::Specialize - Generate per-subclass variants for your methods.
 
 =head1 SYNOPSIS
 
+    package Foo;
 	use Method::Specialize;
 
+    use namespace::clean;
+
+    specializing_method foo => sub {
+        my $class = shift;
+
+        return sub {
+            warn "Hi, i'm a version of Foo::bar specialized for $class";
+        };
+    };
+
+    package Bar;
+    use base qw(Foo);
+
+    Bar->foo; # calls the generator when needed, generally goes to cache
+
 =head1 DESCRIPTION
+
+This package uses L<Class::MethodCache> to create per-subclass versions of a
+method.
+
+This is useful for for removing dynamism from generated code.
+
+The generated versions will be invalidated using the same mechanism that
+invalidates Perl's method resolution caching, so any changes to C<@ISA> or a
+symbol table will clear the stale methods (under 5.10 this only clears the
+cached methods of affected classes, under 5.8 this clears all caches globaly).
+
+=head1 EXPORTS
+
+=over 4
+
+=item specializing_method $name, $generator
+
+Declare a method C<$name> in the current class, whose bodies are created per
+subclass using $generator.
+
+=back
+
+=head1 TODO
+
+Currently specializing the method on the superclass is suboptimal, since we
+must do some condition checking first. This can be done much more efficiently
+in XS.
 
 =head1 VERSION CONTROL
 
